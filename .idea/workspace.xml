@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SGPL_tcc.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGPL_tcc.iml" beforeDir="false" />
+    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="segundo commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Historico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Laboratorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Professor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/ProfessorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +43,18 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java" />
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\model" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SGPL_tcc" />
@@ -74,10 +82,26 @@
       <workItem from="1727259826305" duration="13000" />
       <workItem from="1727259841346" duration="19000" />
       <workItem from="1727259888398" duration="616000" />
+      <workItem from="1727261424799" duration="111000" />
+      <workItem from="1727261547652" duration="42000" />
+      <workItem from="1727261620584" duration="193000" />
     </task>
+    <task id="LOCAL-00001" summary="segundo commit">
+      <option name="closed" value="true" />
+      <created>1727261508446</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727261508446</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="segundo commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="segundo commit" />
   </component>
 </project>
