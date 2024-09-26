@@ -1,7 +1,5 @@
 package model;
 
-
-
 public class Professor{
 
     public Long rm;

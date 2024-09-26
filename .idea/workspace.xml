@@ -4,21 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="segundo commit">
+    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="terceiro commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/CorsConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Historico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Laboratorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Maquina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/ProfessorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,11 +43,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "last_directory_selection": "Z:/TCC 2024/SGPL_tcc/src/main/java",
     "last_opened_file_path": "Z:/TCC 2024/SGPL_tcc",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -51,24 +58,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com" />
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com\sgpl" />
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com.sgpl.tcc" />
+      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com\tcc" />
       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java" />
-      <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\model" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="SGPL_tcc" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="SGPL_tcc" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -85,6 +80,9 @@
       <workItem from="1727261424799" duration="111000" />
       <workItem from="1727261547652" duration="42000" />
       <workItem from="1727261620584" duration="193000" />
+      <workItem from="1727262215128" duration="1514000" />
+      <workItem from="1727354078418" duration="4000" />
+      <workItem from="1727354224365" duration="3868000" />
     </task>
     <task id="LOCAL-00001" summary="segundo commit">
       <option name="closed" value="true" />
@@ -94,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727261508446</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="terceiro commit">
+      <option name="closed" value="true" />
+      <created>1727263701745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727263701745</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="segundo commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="segundo commit" />
+    <MESSAGE value="terceiro commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="terceiro commit" />
   </component>
 </project>
