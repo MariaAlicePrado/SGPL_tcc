@@ -1,11 +1,23 @@
 package model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Tecnico")
 public class Tecnico {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long rm;
+
+    @Column(nullable = false)
     public Long senha;
+    @Column(nullable = false, length = 40)
     public String nome;
+    @Column(nullable = false)
     public boolean cod_status;
+
+    // GET E SET
 
     public Long getRm() {
         return rm;

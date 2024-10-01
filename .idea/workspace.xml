@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="terceiro commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/CorsConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SgplApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/HistoricoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/LaboratorioRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/MaquinaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/OcorrenciaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/TecnicoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ProfessorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Historico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Professor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="spring-beans.schema" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -37,25 +48,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_directory_selection": "Z:/TCC 2024/SGPL_tcc/src/main/java",
-    "last_opened_file_path": "Z:/TCC 2024/SGPL_tcc",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_directory_selection&quot;: &quot;Z:/TCC 2024/SGPL_tcc/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/LIP1/workspace_projetos/pizzaria2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com" />
@@ -83,6 +94,11 @@
       <workItem from="1727262215128" duration="1514000" />
       <workItem from="1727354078418" duration="4000" />
       <workItem from="1727354224365" duration="3868000" />
+      <workItem from="1727359307338" duration="233000" />
+      <workItem from="1727691367042" duration="1266000" />
+      <workItem from="1727696662219" duration="4361000" />
+      <workItem from="1727703633333" duration="1513000" />
+      <workItem from="1727777816358" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="segundo commit">
       <option name="closed" value="true" />
@@ -100,11 +116,30 @@
       <option name="project" value="LOCAL" />
       <updated>1727263701745</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="terceiro commit">
+      <option name="closed" value="true" />
+      <created>1727359480686</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727359480686</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="segundo commit" />

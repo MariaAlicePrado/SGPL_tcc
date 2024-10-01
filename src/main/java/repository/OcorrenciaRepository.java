@@ -1,9 +1,9 @@
 package repository;
 
-import model.Professor;
+import model.Ocorrencia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProfessorRepository extends JpaRepository <Professor, Long> {
+public interface OcorrenciaRepository extends JpaRepository <Ocorrencia, Long> {
 }
