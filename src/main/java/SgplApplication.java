@@ -1,8 +1,19 @@
+import model.Ocorrencia;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SgplApplication {
+public class SgplApplication{
+
+    public static void main(String[] args) {
+
+        SpringApplication.run(SgplApplication.class, args);
+
+        System.out.println("Teste de ocorrência");
+
+
+
+    }
 
 
 }

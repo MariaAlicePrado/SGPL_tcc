@@ -4,23 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="terceiro commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/SgplApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/HistoricoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/LaboratorioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/MaquinaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/OcorrenciaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/repository/TecnicoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ProfessorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="quarto commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Historico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Maquina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SgplApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SgplApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +36,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_directory_selection&quot;: &quot;Z:/TCC 2024/SGPL_tcc/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/LIP1/workspace_projetos/pizzaria2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/TCC 2024/SGPL_tcc/pom.xml&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -75,6 +65,52 @@
       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com\tcc" />
       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java" />
     </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SgplApplication">
+    <configuration name="SGPL_TCC" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="SgplApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="SGPL_TCC" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="SgplApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Maven.SGPL_TCC" />
+      <item itemvalue="Spring Boot.SgplApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SgplApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,7 +134,8 @@
       <workItem from="1727691367042" duration="1266000" />
       <workItem from="1727696662219" duration="4361000" />
       <workItem from="1727703633333" duration="1513000" />
-      <workItem from="1727777816358" duration="332000" />
+      <workItem from="1727777816358" duration="951000" />
+      <workItem from="1727778776449" duration="776000" />
     </task>
     <task id="LOCAL-00001" summary="segundo commit">
       <option name="closed" value="true" />
@@ -124,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727359480686</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="quarto commit">
+      <option name="closed" value="true" />
+      <created>1727778287719</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727778287720</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +189,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="segundo commit" />
     <MESSAGE value="terceiro commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="terceiro commit" />
+    <MESSAGE value="quarto commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="quarto commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/SgplApplication.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
