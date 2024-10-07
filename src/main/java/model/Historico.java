@@ -11,7 +11,7 @@ public class Historico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    // FALTAM DUAS CJAVES ESTRANGEIRAS
+    // FALTAM DUAS CHAVES ESTRANGEIRAS
     @Column(nullable = false)
     public Date data_inicio;
     @Column(nullable = false)

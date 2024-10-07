@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="quarto commit">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/control/ProfessorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SgplApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SgplApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SgplApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SgplApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Historico.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,7 +48,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_directory_selection": "Z:/TCC 2024/SGPL_tcc/src/main/java",
-    "last_opened_file_path": "Z:/LIP1/workspace_projetos/pizzaria2",
+    "last_opened_file_path": "Z:/TCC 2024/SGPL_tcc",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,51 +69,15 @@
       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SgplApplication">
-    <configuration name="SGPL_TCC" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="cmdOptions" />
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="projectsCmdOptionValues">
-              <list />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration name="SgplApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="SgplApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="SGPL_TCC" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="SgplApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="services.SgplApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Maven.SGPL_TCC" />
-      <item itemvalue="Spring Boot.SgplApplication" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.SgplApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -138,7 +103,9 @@
       <workItem from="1727703633333" duration="1513000" />
       <workItem from="1727777816358" duration="951000" />
       <workItem from="1727778776449" duration="776000" />
-      <workItem from="1727865317069" duration="301000" />
+      <workItem from="1727865317069" duration="2959000" />
+      <workItem from="1727973305202" duration="5671000" />
+      <workItem from="1728301260476" duration="499000" />
     </task>
     <task id="LOCAL-00001" summary="segundo commit">
       <option name="closed" value="true" />
@@ -180,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727865617486</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="quarto commit">
+      <option name="closed" value="true" />
+      <created>1727865781201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727865781201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,16 +177,5 @@
     <MESSAGE value="terceiro commit" />
     <MESSAGE value="quarto commit" />
     <option name="LAST_COMMIT_MESSAGE" value="quarto commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/SgplApplication.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
