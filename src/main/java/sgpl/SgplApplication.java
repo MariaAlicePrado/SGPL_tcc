@@ -1,4 +1,4 @@
-package services;
+package sgpl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,9 +12,5 @@ public class SgplApplication{
 
         System.out.println("Teste de ocorrência");
 
-
-
     }
-
-
 }

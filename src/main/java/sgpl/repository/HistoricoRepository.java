@@ -1,6 +1,6 @@
-package repository;
+package sgpl.repository;
 
-import model.Historico;
+import sgpl.model.Historico;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

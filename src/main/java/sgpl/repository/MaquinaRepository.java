@@ -1,9 +1,9 @@
-package repository;
+package sgpl.repository;
 
-import model.Ocorrencia;
+import sgpl.model.Maquina;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OcorrenciaRepository extends JpaRepository <Ocorrencia, Long> {
+public interface MaquinaRepository extends JpaRepository <Maquina, Long> {
 }
