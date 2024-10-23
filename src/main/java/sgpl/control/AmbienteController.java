@@ -1,35 +1,25 @@
 package sgpl.control;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sgpl.model.Ambiente;
 import sgpl.services.AmbienteService;
 import java.util.List;
 
 @RestController
 @RequestMapping("/ambiente/")
-public class AmbienteController {
+@CrossOrigin(origins = "*")
+public class AmbienteController extends ControllerPadrao<Ambiente> {
 
     final AmbienteService ambienteService;
-    public AmbienteController(AmbienteService ambienteService) {
+    public AmbienteController(JpaRepository<Ambiente, Long> repository, AmbienteService ambienteService) {
+        super(repository);
         this.ambienteService = ambienteService;
+
     }
 
-    @GetMapping("findAll")
-    public ResponseEntity<List<Ambiente>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(ambienteService.findAll());
-    }
-
-    @GetMapping("findById/{id}")
-    public ResponseEntity<Ambiente> findById(@PathVariable long id) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(ambienteService.findById(id));
-    }
 
 }
 

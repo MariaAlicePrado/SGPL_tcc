@@ -2,8 +2,11 @@ package sgpl.services;
 
 import org.springframework.stereotype.Service;
 import sgpl.model.Maquina;
+import sgpl.model.Usuario;
 import sgpl.repository.MaquinaRepository;
 
+import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,6 +23,7 @@ public class MaquinaServiceImpl implements MaquinaService  {
     public Maquina inserir(Maquina maquina) {
         return null;
     }
+
 
     @Override
     public Maquina salvar(Maquina ocorrencia) {

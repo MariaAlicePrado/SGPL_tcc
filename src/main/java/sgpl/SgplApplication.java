@@ -10,7 +10,7 @@ public class SgplApplication{
 
         SpringApplication.run(SgplApplication.class, args);
 
-        System.out.println("Teste de ocorrência");
+        System.out.println("FIM");
 
     }
 }

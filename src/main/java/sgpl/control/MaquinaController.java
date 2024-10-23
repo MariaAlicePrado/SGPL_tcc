@@ -1,36 +1,37 @@
 package sgpl.control;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import sgpl.model.Ambiente;
 import sgpl.model.Maquina;
+import sgpl.model.Usuario;
+import sgpl.services.AmbienteService;
 import sgpl.services.MaquinaService;
 import java.util.List;
 
 @RestController
 @RequestMapping("/maquina/")
-public class MaquinaController {
+@CrossOrigin(origins = "*")
+public class MaquinaController extends ControllerPadrao<Maquina> {
 
     final MaquinaService maquinaService;
-    public MaquinaController(MaquinaService maquinaService) {
+
+    final AmbienteService ambienteService;
+    public MaquinaController(JpaRepository<Maquina, Long> repository, MaquinaService maquinaService, AmbienteService ambienteService) {
+        super(repository);
         this.maquinaService = maquinaService;
+        this.ambienteService = ambienteService;
     }
 
-    @GetMapping("findAll")
-    public ResponseEntity<List<Maquina>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(maquinaService.findAll());
+    @Override
+    public ResponseEntity<Maquina> create(Maquina entidade) {
+        System.out.println(entidade.getAmbienteId());
+        Ambiente ambiente = ambienteService.findById(entidade.getAmbienteId());
+        entidade.setAmbiente(ambiente);
+        return super.create(entidade);
     }
-
-    @GetMapping("findById/{id}")
-    public ResponseEntity<Maquina> findById(@PathVariable long id) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(maquinaService.findById(id));
-    }
-
 }
 
 

@@ -7,4 +7,7 @@ import sgpl.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
+    Usuario findByRm(String rm);
+
+    Usuario findByEmail(String email);
 }

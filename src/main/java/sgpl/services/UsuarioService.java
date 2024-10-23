@@ -12,4 +12,14 @@ public interface UsuarioService {
     List<Usuario> findAll();
 
     Usuario findById(long id);
+
+    Usuario findByRm(String rm);
+
+    Usuario alterarUsuario(Long id, Usuario usuario);
+
+    Usuario inativar(Long id);
+
+    Usuario reativar(Long id);
+
+    Usuario signin(String rm, String senha);
 }

@@ -1,0 +1,444 @@
+Index: src/main/java/sgpl/services/UsuarioServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.services;\r\n\r\nimport org.springframework.stereotype.Service;\r\nimport sgpl.model.Usuario;\r\nimport sgpl.repository.UsuarioRepository;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class UsuarioServiceImpl implements UsuarioService  {\r\n\r\n    private UsuarioRepository usuarioRepository;\r\n\r\n    public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {\r\n\r\n        this.usuarioRepository = usuarioRepository;\r\n    }\r\n\r\n    @Override\r\n    public Usuario inserir(Usuario usuario) {\r\n\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public Usuario salvar(Usuario ocorrencia) {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public List<Usuario> findAll() {\r\n        return usuarioRepository.findAll();\r\n    }\r\n\r\n    @Override\r\n    public Usuario findById(long id) {\r\n        return usuarioRepository.findById(id).get();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/services/UsuarioServiceImpl.java b/src/main/java/sgpl/services/UsuarioServiceImpl.java
+--- a/src/main/java/sgpl/services/UsuarioServiceImpl.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/services/UsuarioServiceImpl.java	(date 1729264459089)
+@@ -1,10 +1,13 @@
+ package sgpl.services;
+ 
++import jakarta.transaction.Transactional;
+ import org.springframework.stereotype.Service;
+ import sgpl.model.Usuario;
+ import sgpl.repository.UsuarioRepository;
+ 
++import java.util.Base64;
+ import java.util.List;
++import java.util.Optional;
+ 
+ @Service
+ public class UsuarioServiceImpl implements UsuarioService  {
+@@ -36,4 +39,71 @@
+     public Usuario findById(long id) {
+         return usuarioRepository.findById(id).get();
+     }
++
++    @Override
++    public Usuario findByRm(String rm) {
++        return this.usuarioRepository.findByRm(rm);
++    }
++
++    @Override
++    public Usuario alterarUsuario(Long id, Usuario usuario){
++        Optional<Usuario> _usuario =  usuarioRepository.findById(id);
++
++        if(_usuario.isPresent()){
++            Usuario usuarioid = _usuario.get();
++
++            usuarioid.setNome(usuario.getNome());
++            usuarioid.setEmail(usuario.getEmail());
++
++            return usuarioRepository.save(usuarioid);
++        }
++
++        return null;
++    }
++
++    @Override
++    public Usuario inativar(Long id){
++        Optional<Usuario> _usuario =  usuarioRepository.findById(id);
++
++        if(_usuario.isPresent()){
++            Usuario usuarioid = _usuario.get();
++
++            usuarioid.setStatusUsuario("INATIVO");
++
++            return usuarioRepository.save(usuarioid);
++        }
++
++        return null;
++    }
++
++    @Override
++    public Usuario reativar(Long id){
++        Optional<Usuario> _usuario =  usuarioRepository.findById(id);
++
++        if(_usuario.isPresent()){
++            Usuario usuarioid = _usuario.get();
++
++            usuarioid.setStatusUsuario("ATIVO");
++
++            return usuarioRepository.save(usuarioid);
++        }
++
++        return null;
++    }
++
++    @Override
++    public Usuario signin(String rm, String senha) {
++        Usuario usuario = usuarioRepository.findByRm(rm);
++        System.out.println(usuario);
++        if(usuario != null) {
++            if (!usuario.getStatusUsuario().equals("INATIVO")) {
++                byte[] decodedPass = Base64.getDecoder()
++                        .decode(usuario.getSenha());
++                if (new String(decodedPass).equals(senha)) {
++                    return usuario;
++                }
++            }
++        }
++        return null;
++    }
+ }
+Index: src/main/java/sgpl/model/Usuario.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.model;\r\n\r\nimport jakarta.persistence.*;\r\nimport java.util.Date;\r\n\r\n@Entity\r\n@Table(name = \"Usuario\")\r\npublic class Usuario{\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    public int id;\r\n\r\n    @Column(nullable = false, length = 10)\r\n    public String rm;\r\n    @Column(nullable = false, length = 40)\r\n    public String nome;\r\n    @Column(nullable = true, length = 100)\r\n    public String email;\r\n    @Column(nullable = false, length = 100)\r\n    public String senha;\r\n    @Column(nullable = false)\r\n    public String nivelAcesso;\r\n    @Column(nullable = false)\r\n    public Date dataCadastro;\r\n    @Column(nullable = false)\r\n    public String statusUsuario;\r\n\r\n\r\n    public int getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setId(int id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public String getRm() {\r\n        return rm;\r\n    }\r\n\r\n    public void setRm(String rm) {\r\n        this.rm = rm;\r\n    }\r\n\r\n    public String getNome() {\r\n        return nome;\r\n    }\r\n\r\n    public void setNome(String nome) {\r\n        this.nome = nome;\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setEmail(String email) {\r\n        this.email = email;\r\n    }\r\n\r\n    public String getSenha() {\r\n        return senha;\r\n    }\r\n\r\n    public void setSenha(String senha) {\r\n        this.senha = senha;\r\n    }\r\n\r\n    public String getNivelAcesso() {\r\n        return nivelAcesso;\r\n    }\r\n\r\n    public void setNivelAcesso(String nivelAcesso) {\r\n        this.nivelAcesso = nivelAcesso;\r\n    }\r\n\r\n    public Date getDataCadastro() {\r\n        return dataCadastro;\r\n    }\r\n\r\n    public void setDataCadastro(Date dataCadastro) {\r\n        this.dataCadastro = dataCadastro;\r\n    }\r\n\r\n    public String getStatusUsuario() {\r\n        return statusUsuario;\r\n    }\r\n\r\n    public void setStatusUsuario(String statusUsuario) {\r\n        this.statusUsuario = statusUsuario;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/model/Usuario.java b/src/main/java/sgpl/model/Usuario.java
+--- a/src/main/java/sgpl/model/Usuario.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/model/Usuario.java	(date 1729260110426)
+@@ -1,5 +1,6 @@
+ package sgpl.model;
+ 
++import com.fasterxml.jackson.annotation.JsonFormat;
+ import jakarta.persistence.*;
+ import java.util.Date;
+ 
+@@ -22,12 +23,21 @@
+     @Column(nullable = false)
+     public String nivelAcesso;
+     @Column(nullable = false)
++    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy  hh:mm:ss")
+     public Date dataCadastro;
+     @Column(nullable = false)
+     public String statusUsuario;
+ 
++    public Usuario(String rm, String senha) {
++        this.rm = rm;
++        this.senha = senha;
++    }
++
++    public Usuario() {
+ 
+-    public int getId() {
++    }
++
++    public long getId() {
+         return id;
+     }
+ 
+Index: src/main/java/sgpl/services/UsuarioService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.services;\r\n\r\nimport sgpl.model.Usuario;\r\nimport java.util.List;\r\n\r\npublic interface UsuarioService {\r\n\r\n    public Usuario inserir(Usuario usuario);\r\n    public Usuario salvar(Usuario ocorrencia);\r\n\r\n\r\n    List<Usuario> findAll();\r\n\r\n    Usuario findById(long id);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/services/UsuarioService.java b/src/main/java/sgpl/services/UsuarioService.java
+--- a/src/main/java/sgpl/services/UsuarioService.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/services/UsuarioService.java	(date 1729262519804)
+@@ -12,4 +12,14 @@
+     List<Usuario> findAll();
+ 
+     Usuario findById(long id);
++
++    Usuario findByRm(String rm);
++
++    Usuario alterarUsuario(Long id, Usuario usuario);
++
++    Usuario inativar(Long id);
++
++    Usuario reativar(Long id);
++
++    Usuario signin(String rm, String senha);
+ }
+Index: src/main/java/sgpl/config/CorsConfiguration2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.config;\r\n\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.web.servlet.config.annotation.CorsRegistry;\r\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurer;\r\n\r\n@Configuration\r\npublic class CorsConfiguration2 implements WebMvcConfigurer {\r\n\r\n    @Override\r\n    public void addCorsMappings(CorsRegistry registry) {\r\n\r\n        registry.addMapping(\"/*\")\r\n                .allowedOrigins(\"http://localhost:5174\")\r\n                .allowedMethods(\"GET\", \"POST\", \"DELETE\", \"PUT\", \"OPTIONS\", \"HEAD\", \"TRACE\", \"CONNECT\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/config/CorsConfiguration2.java b/src/main/java/sgpl/config/CorsConfiguration2.java
+--- a/src/main/java/sgpl/config/CorsConfiguration2.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/config/CorsConfiguration2.java	(date 1729258393755)
+@@ -10,8 +10,7 @@
+     @Override
+     public void addCorsMappings(CorsRegistry registry) {
+ 
+-        registry.addMapping("/*")
+-                .allowedOrigins("http://localhost:5174")
++        registry.addMapping("/**")
+                 .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+     }
+ }
+Index: src/main/java/sgpl/control/UsuarioController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.control;\r\n\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.PathVariable;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\nimport sgpl.model.Usuario;\r\nimport sgpl.services.UsuarioService;\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(\"/usuario/\")\r\npublic class UsuarioController {\r\n\r\n    final UsuarioService usuarioService;\r\n\r\n    public UsuarioController(UsuarioService usuarioService) {\r\n\r\n        this.usuarioService = usuarioService;\r\n    }\r\n\r\n    @GetMapping(\"findAll\")\r\n    public ResponseEntity<List<Usuario>> findAll() {\r\n        return ResponseEntity.status(HttpStatus.OK)\r\n                .body(usuarioService.findAll());\r\n    }\r\n\r\n    @GetMapping(\"findById/{id}\")\r\n    public ResponseEntity<Usuario> findById(@PathVariable long id) {\r\n        return ResponseEntity.status(HttpStatus.OK)\r\n                .body(usuarioService.findById(id));\r\n    }\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/control/UsuarioController.java b/src/main/java/sgpl/control/UsuarioController.java
+--- a/src/main/java/sgpl/control/UsuarioController.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/control/UsuarioController.java	(date 1729265008362)
+@@ -2,10 +2,7 @@
+ 
+ import org.springframework.http.HttpStatus;
+ import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.PathVariable;
+-import org.springframework.web.bind.annotation.RequestMapping;
+-import org.springframework.web.bind.annotation.RestController;
++import org.springframework.web.bind.annotation.*;
+ import sgpl.model.Usuario;
+ import sgpl.services.UsuarioService;
+ import java.util.List;
+@@ -33,6 +30,42 @@
+                 .body(usuarioService.findById(id));
+     }
+ 
++    @PostMapping("findByRm")
++    public ResponseEntity<Usuario> findByRm(@PathVariable Usuario usuario) {
++        return ResponseEntity.status(HttpStatus.OK)
++                .body(usuarioService.findByRm(usuario.rm));
++    }
++
++    @PutMapping("inativar/{id}")
++    public ResponseEntity<Usuario> inativar(@PathVariable Long id) {
++        return ResponseEntity.status(HttpStatus.OK)
++                .body(usuarioService.inativar(id));
++    }
++
++    @PutMapping("reativar/{id}")
++    public ResponseEntity<Usuario> reativar(@PathVariable Long id) {
++        return ResponseEntity.status(HttpStatus.OK)
++                .body(usuarioService.reativar(id));
++    }
++
++    @PutMapping("alterar/{id}")
++    public ResponseEntity<Usuario> alterar(@PathVariable Long id,  @RequestBody Usuario usuario) {
++        return ResponseEntity.status(HttpStatus.OK)
++                .body(usuarioService.alterarUsuario(id, usuario));
++    }
++
++    @PostMapping("signin")
++    public ResponseEntity<Usuario> signin(@RequestParam String rm, @RequestParam String senha) {
++        System.out.println("TST");
++        Usuario usuario = usuarioService.signin(rm, senha);
++
++        if (usuario == null) {
++            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
++        }
++
++        return ResponseEntity.ok(usuario);
++    }
++
+ }
+ 
+ 
+Index: src/main/java/sgpl/repository/UsuarioRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sgpl.repository;\r\n\r\n\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.stereotype.Repository;\r\nimport sgpl.model.Usuario;\r\n\r\n@Repository\r\npublic interface UsuarioRepository extends JpaRepository <Usuario, Long> {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/sgpl/repository/UsuarioRepository.java b/src/main/java/sgpl/repository/UsuarioRepository.java
+--- a/src/main/java/sgpl/repository/UsuarioRepository.java	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/src/main/java/sgpl/repository/UsuarioRepository.java	(date 1729262461749)
+@@ -7,4 +7,7 @@
+ 
+ @Repository
+ public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
++    Usuario findByRm(String rm);
++
++    Usuario findByEmail(String email);
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5f5f1ee5-918e-4efd-a8d7-0d16d52c593c\" name=\"Changes\" comment=\"quarto commit\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration2.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/control/AmbienteController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/control/HistoricoController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/control/MaquinaController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/control/OcorrenciaController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/control/UsuarioController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/repository/AmbienteRepository.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/AmbienteService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/AmbienteServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/MaquinaService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/MaquinaServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaServiceImpl.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/config/CorsConfiguration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/control/ProfessorController.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Historico.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/model/Historico.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Laboratorio.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/model/Ambiente.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Maquina.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/model/Maquina.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Ocorrencia.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/model/Ocorrencia.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Professor.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/model/Tecnico.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/HistoricoRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/repository/HistoricoRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/LaboratorioRepository.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/MaquinaRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/repository/MaquinaRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/OcorrenciaRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/repository/OcorrenciaRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/repository/TecnicoRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/repository/UsuarioRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/services/ProfessorService.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/services/SgplApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/sgpl/SgplApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/application.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/application.properties\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"spring-beans.schema\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2mYiBFSrbLRXM8nZqwJsFI7Kp12\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;last_directory_selection&quot;: &quot;Z:/TCC 2024/SGPL_tcc/src/main/java&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;Z:/TCC 2024/SGPL_tcc&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;sqlserver&quot;,\r\n      &quot;sqlserver.localdb&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"Z:\\TCC 2024\\SGPL_tcc\\src\\main\\java\\com\" />\r\n      <recent name=\"Z:\\TCC 2024\\SGPL_tcc\\src\\main\\java\\com\\sgpl\" />\r\n      <recent name=\"Z:\\TCC 2024\\SGPL_tcc\\src\\main\\java\\com.sgpl.tcc\" />\r\n      <recent name=\"Z:\\TCC 2024\\SGPL_tcc\\src\\main\\java\\com\\tcc\" />\r\n      <recent name=\"Z:\\TCC 2024\\SGPL_tcc\\src\\main\\java\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"sgpl\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"sgpl.control\" />\r\n      <recent name=\"sgpl.config\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"SGPL_tcc\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SgplApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <option name=\"FRAME_DEACTIVATION_UPDATE_POLICY\" value=\"UpdateClassesAndResources\" />\r\n      <module name=\"sgpl\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"sgpl.SgplApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5f5f1ee5-918e-4efd-a8d7-0d16d52c593c\" name=\"Changes\" comment=\"\" />\r\n      <created>1727259773032</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1727259773032</updated>\r\n      <workItem from=\"1727259774019\" duration=\"35000\" />\r\n      <workItem from=\"1727259826305\" duration=\"13000\" />\r\n      <workItem from=\"1727259841346\" duration=\"19000\" />\r\n      <workItem from=\"1727259888398\" duration=\"616000\" />\r\n      <workItem from=\"1727261424799\" duration=\"111000\" />\r\n      <workItem from=\"1727261547652\" duration=\"42000\" />\r\n      <workItem from=\"1727261620584\" duration=\"193000\" />\r\n      <workItem from=\"1727262215128\" duration=\"1514000\" />\r\n      <workItem from=\"1727354078418\" duration=\"4000\" />\r\n      <workItem from=\"1727354224365\" duration=\"3868000\" />\r\n      <workItem from=\"1727359307338\" duration=\"233000\" />\r\n      <workItem from=\"1727691367042\" duration=\"1266000\" />\r\n      <workItem from=\"1727696662219\" duration=\"4361000\" />\r\n      <workItem from=\"1727703633333\" duration=\"1513000\" />\r\n      <workItem from=\"1727777816358\" duration=\"951000\" />\r\n      <workItem from=\"1727778776449\" duration=\"776000\" />\r\n      <workItem from=\"1727865317069\" duration=\"2959000\" />\r\n      <workItem from=\"1727973305202\" duration=\"5671000\" />\r\n      <workItem from=\"1728301260476\" duration=\"2536000\" />\r\n      <workItem from=\"1728305753603\" duration=\"4257000\" />\r\n      <workItem from=\"1728311700077\" duration=\"2962000\" />\r\n      <workItem from=\"1728385410481\" duration=\"4056000\" />\r\n      <workItem from=\"1728391121755\" duration=\"918000\" />\r\n      <workItem from=\"1728394198511\" duration=\"6129000\" />\r\n      <workItem from=\"1728473847755\" duration=\"1895000\" />\r\n      <workItem from=\"1728567483013\" duration=\"1201000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"segundo commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727261508446</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727261508446</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"terceiro commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727263701745</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727263701745</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"terceiro commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727359480686</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727359480686</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"quarto commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727778287719</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727778287720</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"quarto commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727865617486</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727865617486</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"quarto commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1727865781201</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1727865781201</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"quarto commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1728301793244</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1728301793245</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"segundo commit\" />\r\n    <MESSAGE value=\"terceiro commit\" />\r\n    <MESSAGE value=\"quarto commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"quarto commit\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 28bcb814b8a764d5f6da74e9b1b176caa19753e1)
++++ b/.idea/workspace.xml	(date 1729265093322)
+@@ -4,43 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="quarto commit">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration2.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/AmbienteController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/HistoricoController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/MaquinaController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/OcorrenciaController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/UsuarioController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/AmbienteRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/AmbienteService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/AmbienteServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/MaquinaService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/MaquinaServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioServiceImpl.java" afterDir="false" />
++    <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="quinto commit">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/config/CorsConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/control/ProfessorController.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Historico.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Laboratorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Ambiente.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Maquina.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Ocorrencia.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tecnico.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/HistoricoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/HistoricoRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/LaboratorioRepository.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/MaquinaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/MaquinaRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/OcorrenciaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/OcorrenciaRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ProfessorRepository.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/TecnicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/UsuarioRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ProfessorService.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/services/SgplApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/SgplApplication.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration2.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/control/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/UsuarioController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/UsuarioRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/UsuarioServiceImpl.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -71,35 +42,35 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;last_directory_selection&quot;: &quot;Z:/TCC 2024/SGPL_tcc/src/main/java&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;Z:/TCC 2024/SGPL_tcc&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "main",
++    "last_directory_selection": "Z:/TCC 2024/SGPL_tcc/src/main/java",
++    "last_opened_file_path": "F:/Informatica/_Leandro_Cruz_/LIP2/workspace/pizzaria3x",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "vue.rearranger.settings.migration": "true"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;DatabaseDriversLRU&quot;: [
+-      &quot;sqlserver&quot;,
+-      &quot;sqlserver.localdb&quot;
++  "keyToStringList": {
++    "DatabaseDriversLRU": [
++      "sqlserver",
++      "sqlserver.localdb"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="Z:\TCC 2024\SGPL_tcc\src\main\java\com" />
+@@ -117,12 +88,6 @@
+     </key>
+   </component>
+   <component name="RunManager">
+-    <configuration default="true" type="JetRunConfigurationType">
+-      <module name="SGPL_tcc" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <configuration name="SgplApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+       <module name="sgpl" />
+@@ -165,7 +130,15 @@
+       <workItem from="1728391121755" duration="918000" />
+       <workItem from="1728394198511" duration="6129000" />
+       <workItem from="1728473847755" duration="1895000" />
+-      <workItem from="1728567483013" duration="1201000" />
++      <workItem from="1728567483013" duration="2747000" />
++      <workItem from="1728642082819" duration="624000" />
++      <workItem from="1728653885389" duration="2377000" />
++      <workItem from="1729174435056" duration="1387000" />
++      <workItem from="1729182611604" duration="2052000" />
++      <workItem from="1729186318497" duration="6144000" />
++      <workItem from="1729246469485" duration="1158000" />
++      <workItem from="1729252179897" duration="1208000" />
++      <workItem from="1729255739013" duration="7975000" />
+     </task>
+     <task id="LOCAL-00001" summary="segundo commit">
+       <option name="closed" value="true" />
+@@ -223,7 +196,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1728301793245</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="quinto commit">
++      <option name="closed" value="true" />
++      <created>1728569873183</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1728569873183</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -244,6 +225,7 @@
+     <MESSAGE value="segundo commit" />
+     <MESSAGE value="terceiro commit" />
+     <MESSAGE value="quarto commit" />
+-    <option name="LAST_COMMIT_MESSAGE" value="quarto commit" />
++    <MESSAGE value="quinto commit" />
++    <option name="LAST_COMMIT_MESSAGE" value="quinto commit" />
+   </component>
+ </project>
+\ No newline at end of file

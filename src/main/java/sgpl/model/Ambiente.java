@@ -13,9 +13,9 @@ public class Ambiente {
     @Column(nullable = false, length = 15)
     public String nome;
     @Column(nullable = false)
-    public int localAmbiente;
+    public String localAmbiente;
     @Column(nullable = false)
-    public String statusLaboratorio;
+    public String statusAmbiente;
 
     public int getId() {
         return id;
@@ -33,19 +33,19 @@ public class Ambiente {
         this.nome = nome;
     }
 
-    public int getLocalAmbiente() {
+    public String getLocalAmbiente() {
         return localAmbiente;
     }
 
-    public void setLocalAmbiente(int localAmbiente) {
+    public void setLocalAmbiente(String localAmbiente) {
         this.localAmbiente = localAmbiente;
     }
 
-    public String getStatusLaboratorio() {
-        return statusLaboratorio;
+    public String getStatusAmbiente() {
+        return statusAmbiente;
     }
 
-    public void setStatusLaboratorio(String statusLaboratorio) {
-        this.statusLaboratorio = statusLaboratorio;
+    public void setStatusAmbiente(String statusAmbiente) {
+        this.statusAmbiente = statusAmbiente;
     }
 }

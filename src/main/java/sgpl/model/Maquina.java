@@ -20,8 +20,21 @@ public class Maquina {
     @JoinColumn(name = "ambiente_id")
     private Ambiente ambiente;
 
+    @Transient
+    private long ambienteId;
+
+    public long getAmbienteId() {
+        return ambienteId;
+    }
+
+    public void setAmbienteId(long ambienteId) {
+        this.ambienteId = ambienteId;
+    }
+
     @Column(nullable = false, length = 20)
     public String statusMaquina;
+
+
 
     public int getId() {
         return id;
