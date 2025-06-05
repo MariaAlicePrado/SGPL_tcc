@@ -26,10 +26,12 @@ public class MaquinaController extends ControllerPadrao<Maquina> {
     }
 
     @Override
+    @PostMapping("create")
     public ResponseEntity<Maquina> create(Maquina entidade) {
         System.out.println(entidade.getAmbienteId());
         Ambiente ambiente = ambienteService.findById(entidade.getAmbienteId());
         entidade.setAmbiente(ambiente);
+        entidade.setStatusMaquina("ATIVA");
         return super.create(entidade);
     }
 }
