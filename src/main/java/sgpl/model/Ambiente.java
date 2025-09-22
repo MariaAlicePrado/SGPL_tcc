@@ -8,7 +8,7 @@ public class Ambiente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public long id;
 
     @Column(nullable = false, length = 15)
     public String nome;
@@ -17,11 +17,11 @@ public class Ambiente {
     @Column(nullable = false)
     public String statusAmbiente;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

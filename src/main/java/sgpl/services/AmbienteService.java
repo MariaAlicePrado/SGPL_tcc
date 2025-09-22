@@ -6,11 +6,16 @@ import java.util.List;
 
 public interface AmbienteService {
 
-    Ambiente inserir(Ambiente ambiente);
-
-    Ambiente salvar(Ambiente ambiente);
+	 public Ambiente create(Ambiente ambiente);
+	 public Ambiente salvar(Ambiente ocorrencia);
 
     List<Ambiente> findAll();
 
     Ambiente findById(long id);
+
+	Ambiente alterarAmbiente(Long id, Ambiente ambiente);
+	
+	Ambiente inativar(Long id);
+	
+	Ambiente reativar(Long id);
 }

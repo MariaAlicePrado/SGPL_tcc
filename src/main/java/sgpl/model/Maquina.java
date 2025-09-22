@@ -8,47 +8,42 @@ public class Maquina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public long id;
 
     // FALTA UMA CHAVE ESTRANGEIRA
     @Column(nullable = true, length = 50)
-    public int patrimonio;
+    public String patrimonio;
     @Column(nullable = false, length = 50)
     public String nome;
 
     @ManyToOne
-    @JoinColumn(name = "ambiente_id")
-    private Ambiente ambiente;
-
-    @Transient
-    private long ambienteId;
-
-    public long getAmbienteId() {
-        return ambienteId;
-    }
-
-    public void setAmbienteId(long ambienteId) {
-        this.ambienteId = ambienteId;
-    }
+    @JoinColumn(name = "ocorrencia_id")
+    private Ocorrencia ocorrencia;
 
     @Column(nullable = false, length = 20)
     public String statusMaquina;
 
+    public Ocorrencia getOcorrencia() {
+        return ocorrencia;
+    }
 
+    public void setOcorrencia(Ocorrencia ocorrencia) {
+        this.ocorrencia = ocorrencia;
+    }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getPatrimonio() {
+    public String getPatrimonio() {
         return patrimonio;
     }
 
-    public void setPatrimonio(int patrimonio) {
+    public void setPatrimonio(String patrimonio) {
         this.patrimonio = patrimonio;
     }
 
@@ -59,15 +54,6 @@ public class Maquina {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public Ambiente getAmbiente() {
-        return ambiente;
-    }
-
-    public void setAmbiente(Ambiente ambiente) {
-        this.ambiente = ambiente;
-    }
-
 
     public String getStatusMaquina() {
         return statusMaquina;

@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MaquinaRepository extends JpaRepository <Maquina, Long> {
+
+    Maquina findByPatrimonio(String patrimonio);
 }

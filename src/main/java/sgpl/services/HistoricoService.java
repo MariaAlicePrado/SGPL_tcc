@@ -12,4 +12,6 @@ public interface HistoricoService {
     List<Historico> findAll();
 
     Historico findById(long id);
+
+    List<Historico> findByOcorrenciaId(long id);
 }

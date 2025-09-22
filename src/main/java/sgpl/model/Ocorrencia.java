@@ -1,6 +1,8 @@
 package sgpl.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -9,18 +11,27 @@ public class Ocorrencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public long id;
+
+    @Column(nullable = false, length = 50)
+    private String titulo;
 
     // FALTAM TRÊS CHAVES ESTRANGEIRAS
     @Column(nullable = false)
-    public Date dataOcorrencia;
+    public LocalDateTime dataOcorrencia;
+
     @Column(nullable = false, length = 500)
     public String descricao;
+
     @Column(nullable = false, length = 10)
     public String periodo;
+
     @Column(nullable = false, length = 20)
     public String classificacao;
-
+    
+    @Column(nullable = true, length = 500)
+    public String resolucao;
+    
     @ManyToOne
     @JoinColumn(name = "ambiente_id")
     private Ambiente ambiente;
@@ -29,27 +40,31 @@ public class Ocorrencia {
     @JoinColumn(name = "professor_id")
     private Usuario professor;
 
-    @ManyToOne
-    @JoinColumn(name = "maquina_id")
-    private Maquina maquina;
-
     @Column(nullable = false)
     public String  statusOcorrencia;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Date getDataOcorrencia() {
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public LocalDateTime getDataOcorrencia() {
         return dataOcorrencia;
     }
 
-    public void setDataOcorrencia(Date dataOcorrencia) {
+    public void setDataOcorrencia(LocalDateTime dataOcorrencia) {
         this.dataOcorrencia = dataOcorrencia;
     }
 
@@ -76,17 +91,24 @@ public class Ocorrencia {
     public void setClassificacao(String classificacao) {
         this.classificacao = classificacao;
     }
+    
+    public String getResolucao() {
+		return resolucao;
+	}
 
+	public void setResolucao(String resolucao) {
+		this.resolucao = resolucao;
+	}
 
-    public Ambiente getAmbiente() {
+	public String getStatusOcorrencia() {
+		return statusOcorrencia;
+	}
+
+	public Ambiente getAmbiente() {
         return ambiente;
     }
 
     public void setAmbiente(Ambiente ambiente) { this.ambiente = ambiente;}
-
-    public Maquina getMaquina() { return maquina;}
-
-    public void setMaquina(Maquina maquina) { this.maquina = maquina;}
 
     public Usuario getProfessor() {
         return professor;

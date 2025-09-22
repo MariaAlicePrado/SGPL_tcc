@@ -9,7 +9,7 @@ public class Historico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public long id;
 
 
     @Column(nullable = false)
@@ -29,14 +29,13 @@ public class Historico {
     public String statusHistorico;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
-
     public Date getDataHistorico() {
         return dataHistorico;
     }

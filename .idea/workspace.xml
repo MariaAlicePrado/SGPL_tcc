@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f5f1ee5-918e-4efd-a8d7-0d16d52c593c" name="Changes" comment="Projeto java">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/config/CorsConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/control/AmbienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/AmbienteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/control/HistoricoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/HistoricoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/control/MaquinaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/MaquinaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/control/OcorrenciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/control/OcorrenciaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Ambiente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Ambiente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Historico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Historico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Ocorrencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Ocorrencia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/repository/AmbienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/AmbienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/repository/HistoricoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/HistoricoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/repository/MaquinaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/repository/MaquinaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/HistoricoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgpl/services/OcorrenciaServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +66,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -63,6 +80,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
+    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -74,7 +93,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;Z:/TCC 2024/SGPL_tcc/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;Z:/TCC 2024/SGPL_tcc&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/TCC original/SGPL_tcc&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -193,7 +212,30 @@
       <workItem from="1743075725978" duration="2364000" />
       <workItem from="1748440089412" duration="3152000" />
       <workItem from="1748444519370" duration="916000" />
-      <workItem from="1749124104755" duration="324000" />
+      <workItem from="1749124104755" duration="1512000" />
+      <workItem from="1749550889238" duration="1547000" />
+      <workItem from="1749563243338" duration="1398000" />
+      <workItem from="1750859518607" duration="1222000" />
+      <workItem from="1750938297573" duration="372000" />
+      <workItem from="1751898099868" duration="260000" />
+      <workItem from="1753697951647" duration="703000" />
+      <workItem from="1753786754997" duration="818000" />
+      <workItem from="1753793992565" duration="2868000" />
+      <workItem from="1753798426410" duration="158000" />
+      <workItem from="1753798597633" duration="1877000" />
+      <workItem from="1753964168904" duration="1273000" />
+      <workItem from="1754399981534" duration="779000" />
+      <workItem from="1754400820174" duration="1265000" />
+      <workItem from="1754487726932" duration="1883000" />
+      <workItem from="1754492480808" duration="1478000" />
+      <workItem from="1754563130939" duration="11195000" />
+      <workItem from="1754909837527" duration="3719000" />
+      <workItem from="1754919568124" duration="1831000" />
+      <workItem from="1754993814109" duration="1661000" />
+      <workItem from="1755172083160" duration="115000" />
+      <workItem from="1755173203593" duration="324000" />
+      <workItem from="1755178583099" duration="812000" />
+      <workItem from="1756128965194" duration="251000" />
     </task>
     <task id="LOCAL-00001" summary="segundo commit">
       <option name="closed" value="true" />

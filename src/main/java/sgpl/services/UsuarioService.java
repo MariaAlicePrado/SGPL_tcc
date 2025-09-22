@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UsuarioService {
 
-    public Usuario inserir(Usuario usuario);
+    public Usuario create(Usuario usuario);
     public Usuario salvar(Usuario ocorrencia);
 
 

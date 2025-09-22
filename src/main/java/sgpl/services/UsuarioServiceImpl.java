@@ -19,11 +19,6 @@ public class UsuarioServiceImpl implements UsuarioService  {
         this.usuarioRepository = usuarioRepository;
     }
 
-    @Override
-    public Usuario inserir(Usuario usuario) {
-
-        return null;
-    }
 
     @Override
     public Usuario salvar(Usuario ocorrencia) {

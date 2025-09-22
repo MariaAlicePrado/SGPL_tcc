@@ -51,7 +51,7 @@ public class UsuarioController {
                 .body(usuarioService.reativar(id));
     }
 
-    @PutMapping("alterar/{id}")
+    @PutMapping("alterarUsuario/{id}")
     public ResponseEntity<Usuario> alterar(@PathVariable Long id,  @RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(usuarioService.alterarUsuario(id, usuario));

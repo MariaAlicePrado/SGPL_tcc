@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import sgpl.model.Ambiente;
 import sgpl.repository.AmbienteRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AmbienteServiceImpl implements AmbienteService  {
@@ -16,8 +17,8 @@ public class AmbienteServiceImpl implements AmbienteService  {
     }
 
     @Override
-    public Ambiente inserir(Ambiente ambiente) {
-        return null;
+    public Ambiente create(Ambiente ambiente) {
+        return ambienteRepository.save(ambiente);
     }
 
     @Override
@@ -34,4 +35,51 @@ public class AmbienteServiceImpl implements AmbienteService  {
     public Ambiente findById(long id) {
         return ambienteRepository.findById(id).get();
     }
+    
+    @Override
+    public Ambiente alterarAmbiente(Long id, Ambiente ambiente){
+        Optional<Ambiente> _ambiente =  ambienteRepository.findById(id);
+
+        if(_ambiente.isPresent()){
+            Ambiente ambienteid = _ambiente.get();
+
+            ambienteid.setNome(ambiente.getNome());
+            ambienteid.setLocalAmbiente(ambiente.getLocalAmbiente());
+
+            return ambienteRepository.save(ambienteid);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Ambiente inativar(Long id){
+        Optional<Ambiente> _ambiente =  ambienteRepository.findById(id);
+
+        if(_ambiente.isPresent()){
+            Ambiente ambienteid = _ambiente.get();
+
+            ambienteid.setStatusAmbiente("INATIVO");
+
+            return ambienteRepository.save(ambienteid);
+        }
+
+        return null;
+    }
+
+    @Override
+    public Ambiente reativar(Long id){
+        Optional<Ambiente> _ambiente =  ambienteRepository.findById(id);
+
+        if(_ambiente.isPresent()){
+            Ambiente ambienteid = _ambiente.get();
+
+            ambienteid.setStatusAmbiente("ATIVO");
+
+            return ambienteRepository.save(ambienteid);
+        }
+
+        return null;
+    }
+
 }

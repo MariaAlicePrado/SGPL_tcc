@@ -32,6 +32,12 @@ public class HistoricoController {
                 .body(historicoService.findById(id));
     }
 
+    @GetMapping("findByOcorrenciaId/{id}")
+    public ResponseEntity<List<Historico>> findByOcorrenciaId(@PathVariable long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(historicoService.findByOcorrenciaId(id));
+    }
+
 }
 
 
