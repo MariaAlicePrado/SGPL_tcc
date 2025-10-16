@@ -20,7 +20,7 @@ public class Usuario{
     @Column(nullable = false, length = 100)
     public String senha;
     @Column(nullable = false)
-    public String nivelAcesso;
+    public String nivelAcesso; // PROFESSOR, TECNICO e ADMIN
     @Column(nullable = false)
     public Date dataCadastro;
     @Column(nullable = false)

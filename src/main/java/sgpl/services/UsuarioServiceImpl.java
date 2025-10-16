@@ -12,15 +12,16 @@ import java.util.Optional;
 @Service
 public class UsuarioServiceImpl implements UsuarioService  {
 
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final EmailService emailService;
 
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, EmailService emailService) {
+		super();
+		this.usuarioRepository = usuarioRepository;
+		this.emailService = emailService;
+	}
 
-        this.usuarioRepository = usuarioRepository;
-    }
-
-
-    @Override
+	@Override
     public Usuario salvar(Usuario ocorrencia) {
         return null;
     }
@@ -30,7 +31,16 @@ public class UsuarioServiceImpl implements UsuarioService  {
 
         usuario.setSenha(senha);
         usuario.setDataCadastro(new Date());
-        return usuarioRepository.save(usuario);
+        
+        Usuario _usuario = usuarioRepository.save(usuario);
+        
+        byte[] decodedPass = Base64.getDecoder()
+                .decode(_usuario.getSenha());
+        String _senha = new String(decodedPass);
+        
+        emailService.enviarMensagemPorEmail(_usuario.getEmail(), _usuario.getRm(), _senha);
+        
+        return _usuario;
     }
     @Override
     public List<Usuario> findAll() {
